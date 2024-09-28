@@ -1,0 +1,140 @@
+﻿@using Doantieuluanlaptrinh.Models
+@model Doantieuluanlaptrinh.Models.DonHang
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<DonHang> list = ViewData["DanhsachDH"] as List<DonHang>;
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Danh sách Bài Viết
+        </h1>
+    </section>
+
+    <!-- Main content -->
+
+    <section class="content">
+
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin chính </h3>
+                <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                            title="Collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <table id="tableArticle" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <td>
+                            Số DH
+                        </td>
+                        <td>
+                           Mã Khách Hàng
+                        </td>
+                        <td>
+                            Tài Khoản
+                        </td>
+                        <td>
+                            Ngày đặt
+                        </td>
+                        <td>
+                           Địa chỉ
+
+                        </td>
+
+                        <td>
+                           Ghi chú
+                        </td>
+                        <td>
+                            Kích hoạt
+
+                        </td>
+                        <td>
+                            Yêu cầu
+
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in list)
+                    {
+                        <tr>
+                            <td>
+                                @item.soDH
+                            </td>
+                            <td>
+                                @item.maKH
+                            </td>
+                            <td>
+                                @item.taiKhoan
+                            </td>
+                            <td>
+                                @string.Format("{0: dd/mm/yyyy}",item.ngayDat)
+                            </td>
+                            <td>
+                                 @item.diaChiGH
+
+                            </td>
+
+                            <td>
+                                @item.ghiChu
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("KichhoatDH", "DanhSachDH", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="soDH" value="@item.soDH">
+                                    <button class="btn">@(item.daKichHoat.GetValueOrDefault()? "Đã kích hoạt":"Chưa")</button>
+                                }
+
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("ChitietDH", "DanhSachDH", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="soDH" value="@item.soDH">
+                                 
+                                    <button class="btn btn-primary">Chi tiết</button>
+                                }
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+
+
+
+
+
+    </section>
+    <!-- /.content -->
+</div>
+
+
+<script>
+    $(function () {
+        $('#tableArticle').DataTable({
+
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+</script>

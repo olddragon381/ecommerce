@@ -1,0 +1,125 @@
+﻿@using Doantieuluanlaptrinh.Models;
+@model Doantieuluanlaptrinh.Models.CtDonHang
+
+@{
+    ViewBag.Title = "ChitietDH";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<CtDonHang> list = ViewData["DanhsachDH"] as List<CtDonHang>;
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Chi tiết đơn hàng
+        </h1>
+    </section>
+
+    <!-- Main content -->
+
+    <section class="content">
+
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin chính </h3>
+                <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                            title="Collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <table id="tableArticle" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <td>
+                            Mã Bài Viết
+                        </td>
+                        <td>
+                            Tên Bài Viết
+                        </td>
+                        <td>
+                            MÃ Loại  Bài Viết
+                        </td>
+                        <td>
+                            Loại Tin
+                        </td>
+                        <td>
+                            Người đăng
+                        </td>
+
+                        <td>
+                            Lượt xem
+                        </td>
+                        <td>
+                            Trạng thái
+
+                        </td>
+                        <td>
+                            Ngày đăng
+                        </td>
+                        <td>
+                            Yêu cầu
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in list)
+                    {
+                        <tr>
+                            
+                            <td>
+                                @item.maSP
+                            </td>
+                            <td>
+                                @item.SanPham.tenSP
+                            </td>
+                            <td>
+                                @item.soLuong
+                            </td>
+                            <td>
+                                @item.giaBan
+                            </td>
+
+                           
+                            <td>
+                                @item.giamGia
+                            </td>
+                            
+                            
+                            
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+
+
+
+
+
+    </section>
+    <!-- /.content -->
+</div>
+
+
+<script>
+    $(function () {
+        $('#tableArticle').DataTable({
+
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+</script>

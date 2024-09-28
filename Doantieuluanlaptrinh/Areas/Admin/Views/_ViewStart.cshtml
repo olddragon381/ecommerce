@@ -1,0 +1,10 @@
+﻿@using Doantieuluanlaptrinh.Models;
+@{
+    TaiKhoan x = (TaiKhoan)Session["TkDangnhap"];
+    if(x == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}

@@ -1,0 +1,146 @@
+﻿@using Doantieuluanlaptrinh.Models;
+@model Doantieuluanlaptrinh.Models.SanPham
+
+@{
+    ViewBag.Title = "DanhsachBV";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<SanPham> list = ViewData["DanhsachSp"] as List<SanPham>;
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Danh sách Bài Viết
+        </h1>
+    </section>
+
+    <!-- Main content -->
+
+    <section class="content">
+
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin chính </h3>
+                <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                            title="Collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <table id="tableArticle" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <td>
+                            Mã Bài Viết
+                        </td>
+                        <td>
+                            Tên Bài Viết
+                        </td>
+                        <td>
+                            MÃ Loại  Bài Viết
+                        </td>
+                        <td>
+                            Loại Tin
+                        </td>
+                        <td>
+                            Người đăng
+                        </td>
+
+                        <td>
+                            Lượt xem
+                        </td>
+                        <td>
+                            Trạng thái
+
+                        </td>
+                        <td>
+                            Ngày đăng
+                        </td>
+                        <td>
+                            Yêu cầu
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in list)
+                    {
+                        <tr>
+                            <td>
+                                @item.maSP
+                            </td>
+                            <td>
+                                @item.tenSP
+                            </td>
+                            <td>
+                                @item.maLoai
+                            </td>
+                            <td>
+                                @item.kichCo
+                            </td>
+                           
+                            <td>
+                                @item.TaiKhoan1.hoDem @item.TaiKhoan1.tenTV
+                            </td>
+
+                            <td>
+                                @item.nhaSanXuat
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("KichhoatSP", "addProduct", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="masp" value="@item.maSP">
+                                    <button class="btn">@(item.daDuyet.GetValueOrDefault()? "Đã kích hoạt":"Chưa")</button>
+                                }
+
+                            </td>
+                            <td>
+                                @string.Format("{0: dd/mm/yyyy}", item.ngayDang)
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("ChinhSuaSP", "addProduct", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="masp" value="@item.maSP">
+                                    <button class="btn btn-primary">Chỉnh sửa</button>
+                                }
+                                @using (Html.BeginForm("XoaSP", "addProduct", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="masp" value="@item.maSP">
+                                    <button class="btn btn-danger">Xóa</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+
+
+
+
+
+    </section>
+    <!-- /.content -->
+</div>
+
+
+<script>
+    $(function () {
+        $('#tableArticle').DataTable({
+
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+</script>

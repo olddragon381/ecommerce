@@ -1,0 +1,135 @@
+﻿@using Doantieuluanlaptrinh.Models
+@model Doantieuluanlaptrinh.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Index";
+    List<TaiKhoan> list = ViewData["DanhsachTK"] as List<TaiKhoan>;
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Danh sách tài khoản
+        </h1>
+    </section>
+
+    <!-- Main content -->
+
+    <section class="content">
+
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin chính </h3>
+                <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                            title="Collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <table id="tableArticle" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <td>
+                            Tài khoản
+                        </td>
+                        <td>
+                            Mật khẩu
+                        </td>
+                        <td>
+                           Họ đệm
+                        </td>
+                        <td>
+                            Tên
+                        </td>
+                        <td>
+                            Số DT
+                        </td>
+                        <td>
+                            Ngày Sinh
+                        </td>
+
+                        <td>
+                           Email
+                        </td>
+                        <td>
+                           Ghi chú
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in list)
+                    {
+                        <tr>
+                            <td>
+                                @item.taiKhoan1
+                            </td>
+                            <td>
+                                @item.matKhau
+                            </td>
+                            <td>
+                                @item.hoDem
+                            </td>
+                            <td>
+                                @item.tenTV
+                            </td>
+                            <td>
+                                @item.soDT
+                            </td>
+                            <td>
+                                @item.ngaysinh
+                            </td>
+
+                            <td>
+                                @item.email
+                            </td>
+                            <td>
+                                @item.ghiChu
+                            </td>
+
+
+                            <td>
+                                @using (Html.BeginForm("KichhoatTK", "DSTaiKhoan", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="taikhoan" value="@item.taiKhoan1">
+                                    <button class="btn">@(item.trangThai.GetValueOrDefault()? "OK":"No")</button>
+                                }
+                              
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+
+
+
+
+
+    </section>
+    <!-- /.content -->
+</div>
+
+
+<script>
+    $(function () {
+        $('#tableArticle').DataTable({
+
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+</script>
+

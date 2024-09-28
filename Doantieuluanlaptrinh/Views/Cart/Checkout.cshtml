@@ -1,0 +1,183 @@
+﻿@using Doantieuluanlaptrinh.Models;
+@model Doantieuluanlaptrinh.Models.KhachHang
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    GioHang item = ViewData["dulieugh"] as GioHang;
+}
+
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title">Checkout<span>Shop</span></h1>
+        </div><!-- End .container -->
+    </div><!-- End .page-header -->
+
+    <div class="page-content">
+        <div class="checkout">
+            <div class="container">
+                <!--<div class="checkout-discount">
+        <form action="#">
+            <input type="text" class="form-control" required id="checkout-discount-input">
+            <label for="checkout-discount-input" class="text-truncate">Have a coupon? <span>Click here to enter your code</span></label>
+        </form>
+    </div>-->
+                <!-- End .checkout-discount -->
+                @using (Html.BeginForm("LuuKhachHang", "Cart", FormMethod.Post))
+                {
+                    <div class="row">
+                        <aside class="col-lg-9">
+                            <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
+                            <label>Họ tên khách hàng *</label>
+                            @Html.TextBoxFor(m => m.tenKH, new { @class = "form-control", @required = "", @placeholder = "Nhập Họ tên" })
+
+                            <label>Địa chỉ *</label>
+                            @Html.TextBoxFor(m => m.diaChi, new { @class = "form-control", @required = "", @placeholder = "Nhập địa chỉ" })
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Giới tính *</label>
+
+                                    Nam:  @Html.RadioButtonFor(m => m.gioiTinh, true)
+                                    Nữ:    @Html.RadioButtonFor(m => m.gioiTinh, false)
+                                </div><!-- End .col-sm-6 -->
+
+                                <div class="col-sm-6">
+
+                                    <label>Số điện thoại *</label>
+                                    @Html.TextBoxFor(m => m.soDT, new { @class = "form-control", @required = "", @placeholder = "Nhập Số điện thoại" })
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Email*</label>
+                                    @Html.TextBoxFor(m => m.email, new { @class = "form-control", @placeholder = "Nhập Email" })
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Ngày sinh *</label>
+                                    @Html.TextBoxFor(model => model.ngaySinh, String.Format("0: dd/mm/yyyy"), new { @type = "date", @class = "form-control", @placeholder = "Nhap Ngày sinh" })                                  
+                                </div >
+
+                            </div >
+                                    <label>Ghi chú*</label>
+                                    @Html.TextAreaFor(m => m.ghiChu, new { @class = "form-control", @placeholder = "Nhập Ghi chú" })
+
+</aside><!-- End .col-lg-9 -->
+                        <aside class="col-lg-3">
+                            <div class="summary">
+                                <h3 class="summary-title">Your Order</h3><!-- End .summary-title -->
+
+                                <table class="table table-summary">
+                                    <thead>
+                                        <tr>
+                                            <th>Sản phẩm</th>
+                                            <th>Tổng</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (CtDonHang i in item.DonHangGH.Values)
+                                        {
+                                            <tr>
+                                                <td class="product-col">
+                                                    <a href="#">@GioHang.laytenLaySanPhamByMa(i.maSP)</a>
+                                                    <!-- End .product -->
+                                                </td>
+                                                <td class="total-col">@string.Format("{0:#,##0 đ}", item.tinhTien(i))</td>
+                                            </tr>
+
+                                        }
+
+                                        <tr class="summary-subtotal">
+                                            <td>Tổng tiền</td>
+                                            <td>@item.Tongtien()</td>
+                                        </tr><!-- End .summary-subtotal -->
+                                        <tr>
+                                            <td>Shipping:</td>
+                                            <td>Free shipping</td>
+                                        </tr>
+                                        <tr class="summary-total">
+                                            <td>Total:</td>
+                                            <td>$160.00</td>
+                                        </tr><!-- End .summary-total -->
+                                    </tbody>
+                                </table><!-- End .table table-summary -->
+
+                                <div class="accordion-summary" id="accordion-payment">
+                                    <div class="card">
+                                        <div class="card-header" id="heading-1">
+                                            <h2 class="card-title">
+                                                <a role="button" data-toggle="collapse" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+                                                    Direct bank transfer
+                                                </a>
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-payment">
+                                            <div class="card-body">
+                                                Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+                                            </div><!-- End .card-body -->
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+
+                                    <div class="card">
+                                        <div class="card-header" id="heading-2">
+                                            <h2 class="card-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+                                                    Check payments
+                                                </a>
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion-payment">
+                                            <div class="card-body">
+                                                Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.
+                                            </div><!-- End .card-body -->
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+
+                                    <div class="card">
+                                        <div class="card-header" id="heading-3">
+                                            <h2 class="card-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+                                                    Cash on delivery
+                                                </a>
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion-payment">
+                                            <div class="card-body">
+                                                Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
+                                            </div><!-- End .card-body -->
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+
+                                    <div class="card">
+                                        <div class="card-header" id="heading-4">
+                                            <h2 class="card-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+                                                    PayPal <small class="float-right paypal-link">What is PayPal?</small>
+                                                </a>
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-4" class="collapse" aria-labelledby="heading-4" data-parent="#accordion-payment">
+                                            <div class="card-body">
+                                                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.
+                                            </div><!-- End .card-body -->
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+
+                                   
+                                </div><!-- End .accordion -->
+
+                                <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
+                                    <span class="btn-text">Place Order</span>
+                                    <span class="btn-hover-text">Proceed to Checkout</span>
+                                </button>
+                            </div><!-- End .summary -->
+                        </aside><!-- End .col-lg-3 -->
+                    </div><!-- End .row -->
+                }
+
+
+            </div><!-- End .container -->
+        </div><!-- End .checkout -->
+    </div><!-- End .page-content -->
+</main><!-- End .main -->

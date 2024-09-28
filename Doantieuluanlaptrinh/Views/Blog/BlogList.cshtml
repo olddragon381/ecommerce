@@ -1,0 +1,48 @@
+﻿@model Doantieuluanlaptrinh.Models.CacBaiViet
+@{
+    ViewBag.Title = "BlogList";
+    Layout = "~/Views/Blog/_ViewBlogPage.cshtml";
+}
+
+@foreach (var item in Model.ListBaiViet)
+{
+    <article class="entry entry-list">
+        <div class="row align-items-center">
+            <div class="col-md-5">
+                <figure class="entry-media">
+                    <a href="@Url.Action("BlogSigle","Blog", new {@Mabaiviet= item.maBV},null)">
+                        <img src="@item.hinhDD" alt="@item.tenBV">
+                    </a>
+                </figure><!-- End .entry-media -->
+            </div><!-- End .col-md-5 -->
+
+            <div class="col-md-7">
+                <div class="entry-body">
+                    <div class="entry-meta">
+                        <span class="entry-author">
+                            by <a href="#">@item.taiKhoan</a>
+                        </span>
+                        <span class="meta-separator">|</span>
+                        <a href="#"> @string.Format("{0: dd/MM/yyyy}", @item.ngayDang)</a>
+                        <span class="meta-separator">|</span>
+                        <a href="#">2 Comments</a>
+                    </div><!-- End .entry-meta -->
+
+                    <h2 class="entry-title">
+                        <a href="@Url.Action("BlogSigle","Blog", new {@Mabaiviet= item.maBV},null)">@item.tenBV</a>
+                    </h2><!-- End .entry-title -->
+
+                    <div class="entry-cats">
+                        in <a href="#">Lifestyle</a>,
+                        <a href="#">Shopping</a>
+                    </div><!-- End .entry-cats -->
+
+                    <div class="entry-content">
+                        <p>@item.moTa</p>
+                        <a href="single.html" class="read-more">Doc</a>
+                    </div><!-- End .entry-content -->
+                </div><!-- End .entry-body -->
+            </div><!-- End .col-md-7 -->
+        </div><!-- End .row -->
+    </article><!-- End .entry -->
+}

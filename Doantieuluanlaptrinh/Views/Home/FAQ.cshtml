@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "FAQ";
+    @model Doantieuluanlaptrinh.Models.HomeModel
+}
+
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('/Content/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title">F.A.Q<span>Pages</span></h1>
+        </div><!-- End .container -->
+    </div><!-- End .page-header -->
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="breadcrumb-item active">@Html.ActionLink("About", "About", "Home")</li>
+            </ol>
+        </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+
+    <div class="page-content">
+        <div class="container">
+            <h2 class="title text-center mb-3">Shipping Information</h2><!-- End .title -->
+            <div class="accordion accordion-rounded" id="accordion-1">
+                <div class="card card-box card-sm bg-light">
+                    <div class="card-header" id="heading-1">
+                        <h2 class="card-title">
+                            <a role="button" data-toggle="collapse" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+                                Bưu kiện của tôi sẽ được giao như thế nào?
+                            </a>
+                        </h2>
+                    </div><!-- End .card-header -->
+                    <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-1">
+                        <div class="card-body">
+                            * Trong hầu hết các trường hợp, gói hàng sẽ được giao trong thời gian dự kiến đến. Tuy nhiên, ngày giao hàng thực tế có thể bị ảnh hưởng bởi việc sắp xếp chuyến bay, điều kiện thời tiết và các yếu tố bên ngoài khác. Vui lòng tham khảo thông tin theo dõi để biết ngày giao hàng chính xác nhất. Thời gian cụ thể tùy thuộc vào trang web / thông báo chính thức của công ty hậu cần.
+                            Nếu gói hàng của bạn chưa được giao hoặc thông tin theo dõi của bạn cho thấy gói hàng của bạn đã được giao nhưng bạn chưa nhận được, bạn phải liên hệ với Dịch vụ Khách hàng để xác minh trong vòng 45 ngày kể từ ngày đặt hàng. Đối với các đơn đặt hàng, sản phẩm và các vấn đề liên quan đến hậu cần khác, bạn phải liên hệ với dịch vụ khách hàng trong vòng 90 ngày kể từ ngày đặt hàng.
+                            * Vui lòng bấm vào nút "Xác nhận Giao hàng" trong vòng 6 tháng (kể từ ngày gửi hàng). Sau đó, nút sẽ chuyển sang màu xám và không thể được sử dụng để nhận thêm điểm.
+                        </div><!-- End .card-body -->
+                    </div><!-- End .collapse -->
+                </div><!-- End .card -->
+
+                <div class="card card-box card-sm bg-light">
+                    <div class="card-header" id="heading-2">
+                        <h2 class="card-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+                                Tôi có trả tiền cho việc giao hàng không?
+                            </a>
+                        </h2>
+                    </div><!-- End .card-header -->
+                    <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion-1">
+                        <div class="card-body">
+                            Nếu gói hàng của bạn chưa được giao hoặc thông tin theo dõi của bạn cho thấy gói hàng của bạn đã được giao nhưng bạn chưa nhận được, bạn phải liên hệ với Dịch vụ Khách hàng để xác minh trong vòng 45 ngày kể từ ngày đặt hàng. Đối với các đơn đặt hàng, sản phẩm và các vấn đề liên quan đến hậu cần khác, bạn phải liên hệ với dịch vụ khách hàng trong vòng 90 ngày kể từ ngày đặt hàng.
+                        </div><!-- End .card-body -->
+                    </div><!-- End .collapse -->
+                </div><!-- End .card -->
+
+               
+
+                <div class="card card-box card-sm bg-light">
+                    <div class="card-header" id="heading-4">
+                        <h2 class="card-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+                                Mặt hàng của tôi đã bị lỗi
+                                
+                            </a>
+                        </h2>
+                    </div><!-- End .card-header -->
+                    <div id="collapse-4" class="collapse" aria-labelledby="heading-4" data-parent="#accordion-1">
+                        <div class="card-body">
+                            1. chúng tôi sẵn sàng chấp nhận trả lại trong vòng 15 ngày kể từ ngày nhận được cho hầu hết các mặt hàng trong tình trạng mới.<br />
+                            2.Nếu bạn chọn dịch vụ lấy hàng qua Ninja Van, khoản phí 80000đ sẽ được trừ vào số tiền hoàn lại của bạn cho mỗi lần trả hàng. (Xem phần "Làm cách nào để hoàn trả?" Để biết chi tiết)<br />
+                            3.Nếu bạn chọn Tự gửi để trả lại bưu kiện của mình, bạn phải chịu phí vận chuyển trả lại.
+                        </div><!-- End .card-body -->
+                    </div><!-- End .collapse -->
+                </div><!-- End .card -->
+            </div><!-- End .accordion -->
+
+            <h2 class="title text-center mb-3">
+                Đơn đặt hàng và trả lại
+            </h2><!-- End .title -->
+            <div class="accordion accordion-rounded" id="accordion-2">
+                <div class="card card-box card-sm bg-light">
+                    <div class="card-header" id="heading2-1">
+                        <h2 class="card-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse2-1" aria-expanded="false" aria-controls="collapse2-1">
+                                Tôi sẽ nhận được tiền hoàn lại như thế nào？
+                            </a>
+                        </h2>
+                    </div><!-- End .card-header -->
+                    <div id="collapse2-1" class="collapse" aria-labelledby="heading2-1" data-parent="#accordion-2">
+                        <div class="card-body">
+                            Yêu cầu của bạn sẽ được xử lý trong vòng 5 ngày làm việc sau khi chúng tôi nhận được yêu cầu của bạn. Khoản tiền hoàn lại sẽ được chuyển vào Ví của bạn hoặc tài khoản thanh toán ban đầu theo yêu cầu của bạn.
+                        </div><!-- End .card-body -->
+                    </div><!-- End .collapse -->
+                </div><!-- End .card -->
+
+                <div class="card card-box card-sm bg-light">
+                    <div class="card-header" id="heading2-2">
+                        <h2 class="card-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse2-2" aria-expanded="false" aria-controls="collapse2-2">
+                                Tôi vẫn có thể trả lại các mặt hàng nếu chúng bị mòn, bị hỏng hoặc đã không mác?
+                            </a>
+                        </h2>
+                    </div><!-- End .card-header -->
+                    <div id="collapse2-2" class="collapse" aria-labelledby="heading2-2" data-parent="#accordion-2">
+                        <div class="card-body">
+                            1. Các mặt hàng phải được trả lại khi chưa đeo, chưa giặt, không bị hư hại và với tất cả các mác ban đầu được đính kèm.<br />
+                            2. Các mặt hàng sau đây không được trả lại hoặc đổi: áo liền quần, nội y, đồ bơi, đồ trang sức, đồ lót, đồ dùng cho sự kiện & tiệc tùng, đồ DIY, đồ dùng cho thú cưng, đồ làm đẹp và phụ kiện (ngoại trừ khăn quàng cổ, túi xách và chăn nàng tiên cá).<br />
+                            3. Các mặt hàng có nhãn hiệu không đổi trả và quà tặng miễn phí không được trả lại.
+                        </div><!-- End .card-body -->
+                    </div><!-- End .collapse -->
+                </div><!-- End .card -->
+
+                <div class="card card-box card-sm bg-light">
+                    <div class="card-header" id="heading2-3">
+                        <h2 class="card-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse2-3" aria-expanded="false" aria-controls="collapse2-3">
+                                Làm cách nào để tôi trả lại?
+                            </a>
+                        </h2>
+                    </div><!-- End .card-header -->
+                    <div id="collapse2-3" class="collapse" aria-labelledby="heading2-3" data-parent="#accordion-2">
+                        <div class="card-body">
+                            1. Đăng nhập vào tài khoản của bạn.<br />
+                            2. Tìm đơn hàng trong Đơn đặt hàng của tôi , nhấp vào nút “Trả lại hàng”.<br />
+                            3. Chọn (các) mặt hàng bạn muốn trả lại, nêu lý do và gửi.<br />
+                            4. Xin vui lòng chuẩn bị các mặt hàng trả lại và đóng gói chúng cẩn thận. Viết số vận chuyển trả lại trên bưu kiện trả lại, sau đó đợi dịch vụ chuyển phát đến lấy bưu kiện.
+                        </div><!-- End .card-body -->
+                    </div><!-- End .collapse -->
+                </div><!-- End .card -->
+            </div><!-- End .accordion -->
+
+            <h2 class="title text-center mb-3">Thanh toán</h2><!-- End .title -->
+            <div class="accordion accordion-rounded" id="accordion-3">
+                <div class="card card-box card-sm bg-light">
+                    <div class="card-header" id="heading3-1">
+                        <h2 class="card-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse3-1" aria-expanded="false" aria-controls="collapse3-1">
+                                Thanh Toán Bằng Paypal
+                            </a>
+                        </h2>
+                    </div><!-- End .card-header -->
+                    <div id="collapse3-1" class="collapse" aria-labelledby="heading3-1" data-parent="#accordion-3">
+                        <div class="card-body">
+                            Khi bạn thanh toán bằng Paypal, trang của bạn sẽ chuyển đến trang thanh toán Paypal, nơi bạn có thể sử dụng tên người dùng và mật khẩu Paypal để đăng nhập vào tài khoản PayPal để thanh toán.
+                            Nếu bạn không có tài khoản Paypal, bạn có thanh toán. Vui lòng nhấp vào "Thanh toán bằng Thẻ ghi nợ / Thẻ tín dụng" và bạn sẽ được chuyển đến trang an toàn nơi bạn có thể nhập thông tin thẻ tín dụng hoặc sử dụng Paypal an toàn để thanh toán.
+                        </div><!-- End .collapse -->
+                </div><!-- End .card -->
+
+                <div class="card card-box card-sm bg-light">
+                    <div class="card-header" id="heading3-2">
+                        <h2 class="card-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse3-2" aria-expanded="false" aria-controls="collapse3-2">
+                                Thanh Toán Bằng Thẻ Tín Dụng / Ghi Nợ
+                            </a>
+                        </h2>
+                    </div><!-- End .card-header -->
+                    <div id="collapse3-2" class="collapse" aria-labelledby="heading3-2" data-parent="#accordion-3">
+                        <div class="card-body">
+                            Các tùy chọn thẻ tín dụng hiện có được liệt kê ở trên. Các công ty thẻ tín dụng được liệt kê ở trên là những thẻ tín dụng được sử dụng phổ biến nhất trên trang web này. Đừng lo lắng nếu công ty thẻ tín dụng của bạn không được liệt kê, chúng tôi khuyến khích bạn tiếp tục và mua hàng.
+                            Xin lưu ý rằng SHEIN không thu thập số thẻ tín dụng / thẻ ghi nợ hoặc thông tin cá nhân của bạn khi bạn thanh toán. Nếu bạn có câu hỏi về các giao dịch của bạn trên trang web của chúng tôi, vui lòng tham khảo ý kiến của ngân hàng phát hàng thẻ để biết thông tin.
+                        </div><!-- End .card-body -->
+                    </div><!-- End .collapse -->
+                </div><!-- End .card -->
+
+     
+
+
+            </div><!-- End .accordion -->
+        </div><!-- End .container -->
+    </div><!-- End .page-content -->
+        </div>
+    <div class="cta cta-display bg-image pt-4 pb-4" style="background-image: url(/Content/images/backgrounds/cta/bg-7.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-9 col-xl-7">
+                    <div class="row no-gutters flex-column flex-sm-row align-items-sm-center">
+                        <div class="col">
+                            <h3 class="cta-title text-white">If You Have More Questions</h3><!-- End .cta-title -->
+                            <p class="cta-desc text-white">Quisque volutpat mattis eros</p><!-- End .cta-desc -->
+                        </div><!-- End .col -->
+
+                        <div class="col-auto">
+                            <a href="@Url.Action("Contact","Home")" class="btn btn-outline-white"><span>CONTACT US</span><i class="icon-long-arrow-right"></i></a>
+                        </div><!-- End .col-auto -->
+                    </div><!-- End .row no-gutters -->
+                </div><!-- End .col-md-10 col-lg-9 -->
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div><!-- End .cta -->
+</main><!-- End .main -->

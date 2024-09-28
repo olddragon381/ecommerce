@@ -1,0 +1,149 @@
+﻿@using Doantieuluanlaptrinh.Models;
+@model Doantieuluanlaptrinh.Models.LoaiSP
+@{
+    ViewBag.Title = "addCateProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<LoaiSP> list = ViewData["DSLoaiSP"] as List<LoaiSP>;
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Chinh sua loai san pham
+        </h1>
+    </section>
+
+    <!-- Main content -->
+
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Thông tin chính </h3>
+                        <div class="pull-right box-tools">
+                            <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <table id="tableArticle" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Tên loại bài viết
+                                </td>
+                                <td>
+                                    Ghi chú
+                                </td>
+                                <td>
+                                    Số bài viết cùng loại
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in list)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.tenLoai
+                                    </td>
+                                    <td>
+                                        @item.ghiChu
+                                    </td>
+                                    <td>
+                                        @item.SanPhams.Where(x => x.maLoai == item.maLoai).Count()
+                                    </td>
+                                    <td>
+                                        @using (Html.BeginForm("removeCateProduct", "addCaterogy", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="maloaicanxoa" value="@item.maLoai">
+                                            <button class="btn btn-danger">Xóa</button>
+                                        }
+                                        @using (Html.BeginForm("updateCateProduct", "addCaterogy", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="maloaicansua" value="@item.maLoai">
+                                            <button class="btn btn-primary">Chỉnh sữa</button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <!--/.col (left) -->
+            <!-- right column -->
+            <div class="col-md-6">
+
+                @using (Html.BeginForm("addCateProduct", "addCaterogy", FormMethod.Post))
+                {
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Thêm loại bài viết</h3>
+                            <a href="#" class="pull-right btn-box-tool"><i class="fa fa-window-minimize"></i></a>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <form role="form">
+                                <!-- text input -->
+
+                                <div class="box-body">
+
+                                    <div class="form-group">
+                                        <label for="InputNameLoaiBV">Tên loại bài viết</label>
+                                        @Html.HiddenFor(x => x.maLoai)
+                                        @Html.TextAreaFor(m => m.tenLoai, new { @class = "form-control", @placeholder = "Nhap tên loại bài viết " })
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputGhiChuLoaiBV">Ghi chu</label>
+                                        @Html.TextAreaFor(m => m.ghiChu, new { @class = "form-control", @placeholder = "Nhap tên loại bài viết " })
+
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit">Lưu thông tin</button>
+
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+
+                }
+            </div>
+            <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+
+
+
+    </section>
+    <!-- /.content -->
+</div>
+
+
+<script>
+    $(function () {
+        $('#tableArticle').DataTable({
+
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+</script>

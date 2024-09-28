@@ -1,0 +1,125 @@
+﻿@using Doantieuluanlaptrinh.Models
+@{
+    ViewBag.Title = "DatHangThanhCong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    GioHang item = ViewData["KetThuc"] as GioHang;
+    KhachHang dulieu = ViewData["Khachhang"] as KhachHang;
+    int stt = 1;
+}
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đặt hàng thành công</font></font><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cửa hàng</font></font></span></h1>
+        </div><!-- End .container -->
+    </div>
+    <div class="page-content">
+        <div class="container">
+            <section class="invoice">
+                <div class="row invoice-info">
+                    <div class="col-sm-8 invoice-col">
+                     
+                        Chi tiết
+                        <address>
+                            Tên khách hàng: <strong>@dulieu.tenKH</strong><br>
+                            Địa chỉ: @dulieu.diaChi<br>
+                            Phone: @dulieu.soDT<br>
+                            Email: @dulieu.email
+                        </address>
+                    </div>
+             
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+
+                        <b>Ngày đặt: </b> @item.NgayDat<br>
+                        <b>Ngày giao:</b>  @item.NgayGiao
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <!-- Table row -->
+                <div class="row">
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá bán</th>
+                                    <th>Giảm giá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var i in item.DonHangGH.Values)
+                                {
+                                    <tr>
+                                        <td>@stt</td>
+                                        <td>@GioHang.laytenLaySanPhamByMa(@i.maSP)</td>
+                                        <td>@i.soLuong</td>
+                                        <td>@i.giaBan</td>
+                                        <td>@i.giamGia</td>
+                                    </tr>
+                                    stt++;
+                                }
+
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <!-- accepted payments column -->
+               
+                    <!-- /.col -->
+                    <div class="col-xs-6">
+                        <p class="lead">@item.NgayDat</p>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th style="width:50%">Thành tiền:</th>
+                                        <td>@string.Format("{0:#,##0 đ}", item.Tongtien())</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Thuế VAT 10%:</td>
+                                        <td>@string.Format("{0:#,##0 đ}", item.Tongtien() * 10 / 100)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Shipping:</th>
+                                        <td>$5.80</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tổng tiền:</th>
+                                        <td>@string.Format("{0:#,##0 đ}", (item.Tongtien() * 10 / 100) + item.Tongtien())</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <!-- this row will not appear when printing -->
+                <div class="row no-print">
+                    <div class="col-xs-12">
+                        <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+                        <button type="button" class="btn btn-success pull-right">
+                            <i class="fa fa-credit-card"></i> Submit Payment
+                        </button>
+                        <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+                            <i class="fa fa-download"></i> Generate PDF
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</main>
+
+
+

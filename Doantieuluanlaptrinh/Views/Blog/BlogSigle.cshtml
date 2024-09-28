@@ -1,0 +1,78 @@
+﻿@model Doantieuluanlaptrinh.Models.CacBaiViet
+@{
+    ViewBag.Title = "BlogSigle";
+    Layout = "~/Views/Blog/_ViewBlogPage.cshtml";
+}
+
+@foreach (var item in Model.baivietdon)
+{
+    <article class="entry single-entry">
+        <div class="entry-body">
+            <div class="entry-meta">
+                <span class="entry-author">
+                    by <a href="#">@item.taiKhoan</a>
+                </span>
+                <span class="meta-separator">|</span>
+                <a href="#">@item.ngayDang</a>
+                <span class="meta-separator">|</span>
+                <a href="#">2 Comments</a>
+            </div><!-- End .entry-meta -->
+
+            <h2 class="entry-title">
+                @item.tenBV
+            </h2><!-- End .entry-title -->
+
+            <div class="entry-cats">
+                in <a href="#">Lifestyle</a>,
+                <a href="#">Shopping</a>
+            </div><!-- End .entry-cats -->
+
+            <div class="entry-content editor-content">
+                <img src="@item.hinhDD" alt="image" class="float-left">
+                @Html.Raw(item.noiDung)
+
+            </div><!-- End .entry-content -->
+
+            <div class="entry-footer row no-gutters flex-column flex-md-row">
+                <div class="col-md">
+                    <div class="entry-tags">
+                        <span>Tags:</span> <a href="#">photography</a> <a href="#">style</a>
+                    </div><!-- End .entry-tags -->
+                </div><!-- End .col -->
+
+                <div class="col-md-auto mt-2 mt-md-0">
+                    <div class="social-icons social-icons-color">
+                        <span class="social-label">Share this post:</span>
+                        <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                        <a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                        <a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+                        <a href="#" class="social-icon social-linkedin" title="Linkedin" target="_blank"><i class="icon-linkedin"></i></a>
+                    </div><!-- End .soial-icons -->
+                </div><!-- End .col-auto -->
+            </div><!-- End .entry-footer row no-gutters -->
+        </div><!-- End .entry-body -->
+
+        <div class="entry-author-details">
+            <figure class="author-media">
+                <a href="#">
+                    <img src="assets/images/blog/single/author.jpg" alt="User name">
+                </a>
+            </figure><!-- End .author-media -->
+
+            <div class="author-body">
+                <div class="author-header row no-gutters flex-column flex-md-row">
+                    <div class="col">
+                        <h4><a href="#">@item.taiKhoan</a></h4>
+                    </div><!-- End .col -->
+                    <div class="col-auto mt-1 mt-md-0">
+                        <a href="#" class="author-link">View all posts by John Doe <i class="icon-long-arrow-right"></i></a>
+                    </div><!-- End .col -->
+                </div><!-- End .row -->
+
+                <div class="author-content">
+                    <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. </p>
+                </div><!-- End .author-content -->
+            </div><!-- End .author-body -->
+        </div><!-- End .entry-author-details-->
+    </article><!-- End .entry -->
+}
